@@ -6,7 +6,7 @@ console.log("Running Verification Tests...");
 console.log("\nTest 1: 0% Swing (1,000,000 dice)");
 let sum0 = 0;
 for (let i = 0; i < 10; i++) {
-    const res = rollDice(1000000, 0);
+    const res = rollDice([{ count: 1000000, sides: 6 }], 0);
     sum0 += res.average;
     console.log(`  Run ${i + 1}: Avg=${res.average.toFixed(4)} (${res.luckTier})`);
 }
@@ -20,7 +20,7 @@ console.log("\nTest 2: 100% Swing (1,000,000 dice)");
 // let variances = [];
 let sums = [];
 for (let i = 0; i < 10; i++) {
-    const res = rollDice(1000000, 1.0);
+    const res = rollDice([{ count: 1000000, sides: 6 }], 1.0);
     sums.push(res.average);
     console.log(`  Run ${i + 1}: Avg=${res.average.toFixed(4)} (${res.luckTier})`);
 }
@@ -34,7 +34,7 @@ else console.log("  PASS: Significant variance observed.");
 console.log("\nTest 3: d20 with 100% Swing (1,000,000 dice)");
 // Expected Mean: 10.5
 for (let i = 0; i < 5; i++) {
-    const res = rollDice(1000000, 1.0, 20);
+    const res = rollDice([{ count: 1000000, sides: 20 }], 1.0);
     console.log(`  Run ${i + 1}: Avg=${res.average.toFixed(4)} (${res.luckTier})`);
 }
 
