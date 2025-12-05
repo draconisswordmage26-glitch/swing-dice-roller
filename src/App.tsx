@@ -73,10 +73,10 @@ function App() {
       <div className={isShaking ? "shake" : ""}>
         <h1>Swing Dice Roller</h1>
         <div className="card">
-          <div className="controls">
+          <div className="controls" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
 
-            <div className="groups-container" style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <label style={{ display: 'block', marginBottom: '10px' }}>Dice Groups</label>
+            <div className="groups-container" style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+              <label style={{ display: 'block', marginBottom: '10px', fontSize: '1.2em', fontWeight: 'bold' }}>Dice Groups</label>
               {diceGroups.map((group, index) => (
                 <div key={index} className="dice-group-row" style={{ display: 'flex', gap: '10px', marginBottom: '10px', alignItems: 'center', justifyContent: 'center' }}>
                   <input
@@ -84,7 +84,7 @@ function App() {
                     value={group.count}
                     onChange={(e) => updateGroup(index, 'count', parseInt(e.target.value) || 0)}
                     min="1"
-                    style={{ width: '100px' }}
+                    style={{ width: '100px', textAlign: 'center' }}
                     placeholder="Count"
                   />
                   <select
@@ -97,7 +97,8 @@ function App() {
                       border: '1px solid #555',
                       color: 'white',
                       borderRadius: '4px',
-                      fontFamily: 'inherit'
+                      fontFamily: 'inherit',
+                      cursor: 'pointer'
                     }}
                   >
                     <option value={4}>d4</option>
@@ -110,34 +111,35 @@ function App() {
                   </select>
                   <button
                     onClick={() => removeGroup(index)}
-                    style={{ padding: '0.6em', background: '#442222', color: '#ffaaaa' }}
+                    style={{ padding: '0.6em', background: '#442222', color: '#ffaaaa', cursor: 'pointer' }}
                     title="Remove Group"
                   >
                     ✕
                   </button>
                 </div>
               ))}
-              <button onClick={addGroup} style={{ width: '100%', marginTop: '10px', background: '#2a2a2a' }}>
+              <button onClick={addGroup} style={{ width: '200px', marginTop: '10px', background: '#2a2a2a' }}>
                 + Add Dice Group
               </button>
             </div>
 
-            <div className="control-group">
-              <label>Swing Factor: {swing}%</label>
+            <div className="control-group" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '20px', width: '100%' }}>
+              <label style={{ fontSize: '1.2em', marginBottom: '10px' }}>Swing Factor: {swing}%</label>
               <input
                 type="range"
                 min="0"
                 max="100"
                 value={swing}
                 onChange={(e) => setSwing(parseInt(e.target.value))}
+                style={{ width: '300px', maxWidth: '100%', cursor: 'pointer' }}
               />
-              <small style={{ color: '#888' }}>
+              <small style={{ color: '#888', marginTop: '5px' }}>
                 0% = Standard Physics<br />
                 100% = Chaos Mode
               </small>
             </div>
 
-            <button onClick={handleRoll} style={{ fontSize: '1.2em', padding: '0.8em 1.6em' }}>
+            <button onClick={handleRoll} style={{ fontSize: '1.5em', padding: '0.8em 2em', marginTop: '10px', background: '#646cff', color: 'white', border: 'none' }}>
               ROLL THE DICE
             </button>
           </div>
