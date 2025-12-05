@@ -1,16 +1,26 @@
 :root {
-  font-family: 'Courier New', Courier, monospace;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #1a1a1a;
+  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
 }
 
 body {
@@ -19,103 +29,148 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  justify-content: center;
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  width: 100%;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  margin-bottom: 0.5em;
-}
-
-.card {
-  padding: 2em;
-  background-color: #242424;
-  border-radius: 8px;
-  border: 1px solid #333;
-  margin-top: 2em;
-}
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-  align-items: center;
-  margin-bottom: 2em;
-}
-
-.control-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  width: 100%;
-  max-width: 400px;
-}
-
-input[type="range"] {
-  width: 100%;
-}
-
-input[type="number"] {
-  padding: 0.6em;
-  font-size: 1.2em;
-  background: #333;
-  border: 1px solid #555;
-  color: white;
-  border-radius: 4px;
-  font-family: inherit;
 }
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #646cff;
+  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.result-display {
-  text-align: left;
-  font-size: 1.2em;
-  border-top: 1px solid #444;
-  padding-top: 1em;
-  margin-top: 1em;
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
 }
 
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  margin: 0.5em 0;
+/* --- New Animations --- */
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
 }
 
-.narrative {
-  margin-top: 1em;
-  font-style: italic;
-  color: #aaa;
+.shake {
+  animation: shake 0.5s;
+  animation-iteration-count: 1;
+}
+
+.splash-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  font-weight: 900;
   text-align: center;
-  font-size: 1.1em;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 2px 2px 0 #000;
+  z-index: 1000;
+  pointer-events: none;
+  animation: splashFade 3s forwards;
+  width: 100%;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
 }
 
-.luck-tier {
-  font-weight: bold;
-  color: #646cff;
+.splash-text.cursed {
+  color: #ff4444;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 2px 2px 0 #000;
+}
+
+@keyframes splashFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  20% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
 }

@@ -21,10 +21,15 @@ This is the easiest way to share your application with the world. Both Vercel an
     *   Create a new repository on GitHub.
     *   Link your local folder to the GitHub repo and push:
         ```bash
-        git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+        git remote add origin https://github.com/draconisswordmage26-glitch/swing-dice-roller.git
         git branch -M main
         git push -u origin main
         ```
+        > [!TIP]
+        > If you get `error: remote origin already exists`, update it instead:
+        > ```bash
+        > git remote set-url origin https://github.com/draconisswordmage26-glitch/swing-dice-roller.git
+        > ```
 
 2.  **Import Project in Vercel**:
     *   Log in to your Vercel dashboard.
