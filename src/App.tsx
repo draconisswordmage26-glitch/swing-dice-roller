@@ -75,10 +75,10 @@ function App() {
         <div className="card">
           <div className="controls">
 
-            <div className="groups-container" style={{ marginBottom: '20px', textAlign: 'left' }}>
+            <div className="groups-container" style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <label style={{ display: 'block', marginBottom: '10px' }}>Dice Groups</label>
               {diceGroups.map((group, index) => (
-                <div key={index} className="dice-group-row" style={{ display: 'flex', gap: '10px', marginBottom: '10px', alignItems: 'center' }}>
+                <div key={index} className="dice-group-row" style={{ display: 'flex', gap: '10px', marginBottom: '10px', alignItems: 'center', justifyContent: 'center' }}>
                   <input
                     type="number"
                     value={group.count}
